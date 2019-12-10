@@ -3,12 +3,15 @@ import { Paper } from '@material-ui/core';
 import WeatherCard from '../weather-card/weather-card';
 import './weather-board.css';
 
-const WeatherBoard = () => {
+const WeatherBoard = props => {
+  const { location } = props;
 
   return (
     <>
-      <Paper>
-        <WeatherCard userPosition></WeatherCard>
+      <Paper className='weather-board'>
+        {location.map(city => {
+          return <WeatherCard cityWeather={city}></WeatherCard>
+        })}
       </Paper>
     </>
   );

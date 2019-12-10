@@ -3,6 +3,7 @@ import { Container, Grid, TextField } from '@material-ui/core';
 import { getUserGeoLocation } from '../../services/geolocation';
 import { stripGeoNames, loadWeatherForLocation, stripLatLong } from '../../reducer/geolocation';
 import WeatherBoard from '../weather-board/weather-board';
+import './weather-main.css';
 
 const WeatherMain = () => {
   const [userPosition, setUserPosition] = useState({});
@@ -11,26 +12,25 @@ const WeatherMain = () => {
   const [location, setLocation] = useState([]);
 
   useEffect(() => {
-    loadLocations();
+    loadLocationsDefault();
   }, []);
 
   useEffect(() => {
     if (userPosition.lat) {
-      loadLocations();
+      loadLocationsFromInput();
     }
   }, [userPosition]);
 
-  const loadLocations = async () => {
+  const loadLocationsDefault = async () => {
     const userCoords = await getUserGeoLocation();
     userCoords.rad = radius;
-    const weatherLocation = loadWeatherForLocation(await loadGeoNames(userCoords));
+    const weatherLocation = loadWeatherForLocation(await stripGeoNames(userCoords));
     setLocation(await weatherLocation);
   }
 
-  const loadGeoNames = async geoProps => {
-    const strippedNames = await stripGeoNames(geoProps);
-    setLocation(strippedNames);
-    return strippedNames;
+  const loadLocationsFromInput = async () => {
+    const weatherLocation = loadWeatherForLocation(await stripGeoNames(userPosition));
+    setLocation(await weatherLocation);
   }
 
   const getPosition = event => {
@@ -68,12 +68,12 @@ const WeatherMain = () => {
   }
 
   return (
-    <Container>
-      <Grid container item>
+    <Container className='weather-container'>
+      <Grid container item direction='column' className='weather-main'>
         <TextField
           type='search'
           onKeyDown={getPosition} />
-        <WeatherBoard />
+        <WeatherBoard location={location} />
       </Grid>
     </Container>
   )

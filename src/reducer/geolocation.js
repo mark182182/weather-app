@@ -18,25 +18,13 @@ export const loadWeatherForLocation = async geoProps => {
 
 export const stripWeatherMap = async geoProps => {
   const weatherMap = await getWeatherMap(geoProps);
-  const mergedWeatherMap = mergePropValue(weatherMap, geoProps.name);
-  return deleteKeysExcept(mergedWeatherMap, ['weather', 'main', 'name']);
+  const { weather, main, name } = mergePropValue(weatherMap, geoProps.name);
+  return { weather, main, name };
 }
 
 export const mergePropValue = (objectToAdd, propValue) => {
   objectToAdd.name = propValue;
   return objectToAdd;
-}
-
-export const deleteKeysExcept = (objectToStrip, exceptionList) => {
-  const keys = Object.keys(objectToStrip);
-  for (const key in keys) {
-    const propName = keys[key];
-    const isException = exceptionList.some(elem => elem === keys[key]);
-    if (!isException) {
-      delete objectToStrip[propName];
-    }
-  }
-  return objectToStrip;
 }
 
 export const stripLatLong = async geoProps => {

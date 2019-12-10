@@ -1,0 +1,7 @@
+.weather-container {
+  text-align: -webkit-center;
+}
+
+.weather-main {
+  width: 40vw !important;
+}
