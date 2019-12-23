@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, TextField } from '@material-ui/core';
+import { Container, Grid, TextField, MenuItem, Select, InputLabel, Typography } from '@material-ui/core';
 import { getUserGeoLocation } from '../../services/geolocation';
 import { stripGeoNames, loadWeatherForLocation, stripLatLong } from '../../reducer/geolocation';
 import WeatherBoard from '../weather-board/weather-board';
@@ -9,7 +9,7 @@ const WeatherMain = () => {
   const [userPosition, setUserPosition] = useState({});
   const [invalidPosition, setInvalidPosition] = useState(false);
   const [radius, setRadius] = useState(10);
-  const [location, setLocation] = useState(new Array(10).fill({}));
+  const [location, setLocation] = useState(new Array(radius).fill({}));
 
   useEffect(() => {
     loadLocationsDefault();
@@ -67,12 +67,35 @@ const WeatherMain = () => {
     }, 4000);
   }
 
+  const handleRadiusChange = event => {
+    setRadius(event.target.value);
+  }
+
+
   return (
     <Container className='weather-container'>
-      <Grid container item direction='column' className='weather-main'>
-        <TextField
-          type='search'
-          onKeyDown={getPosition} />
+      <Grid container direction='column' className='weather-main'>
+        <Grid container justify='space-between'>
+          <Grid container item alignItems='center'xs={6}>
+            <InputLabel>Location: </InputLabel>
+            <TextField
+              type='search'
+              variant='outlined'
+              onKeyDown={getPosition} />
+          </Grid>
+          <Grid container item justify='flex-end' alignItems='center'xs={3}>
+            <InputLabel>Radius: </InputLabel>
+            <Select
+              value={radius}
+              variant='outlined'
+              title='asd'
+              onChange={handleRadiusChange}>
+              {[10, 20, 30, 40].map(item => {
+                return <MenuItem value={item}>{item}</MenuItem>;
+              })}
+            </Select>
+          </Grid>
+        </Grid>
         <WeatherBoard location={location} />
       </Grid>
     </Container>

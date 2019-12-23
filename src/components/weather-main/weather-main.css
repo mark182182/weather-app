@@ -1,4 +1,5 @@
 .weather-container {
+  padding-top: 2em;
   text-align: -webkit-center;
 }
 
@@ -10,10 +11,10 @@
   .weather-main {
     width: 60vw !important;
   }
-} 
+}
 
 @media (max-width: 390px) {
   .weather-main {
     width: 90vw !important;
   }
-} 
+}
