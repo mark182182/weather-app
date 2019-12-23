@@ -1,3 +1,17 @@
 .weather-card {
   margin: 2em;
 }
+
+.weather-card-skeleton {
+  width: 85%;
+  height: 20% !important;
+  margin: 2em;
+}
+
+@media (max-width: 768px) {
+  .weather-card-skeleton {
+    width: 70%;
+    height: 25% !important;
+    margin: 2em;
+  }
+} 

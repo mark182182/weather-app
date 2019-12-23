@@ -9,7 +9,7 @@ const WeatherMain = () => {
   const [userPosition, setUserPosition] = useState({});
   const [invalidPosition, setInvalidPosition] = useState(false);
   const [radius, setRadius] = useState(10);
-  const [location, setLocation] = useState([]);
+  const [location, setLocation] = useState(new Array(10).fill({}));
 
   useEffect(() => {
     loadLocationsDefault();

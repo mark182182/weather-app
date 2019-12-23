@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Card, CardMedia, CardContent, Typography, Divider } from '@material-ui/core';
+import { Card, CardContent, Typography, Divider } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import './weather-card.css';
 
@@ -8,9 +8,6 @@ const WeatherCard = props => {
 
   const renderCard = () => {
     return <Card className='weather-card'>
-      <CardMedia
-        title={cityWeather.weather[0].main}
-      />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           {cityWeather.name}
@@ -27,12 +24,12 @@ const WeatherCard = props => {
   }
 
   const renderSkeleton = () => {
-    return <Skeleton variant="rect" width={210} height={118} />
+    return <Skeleton variant="rect" className='weather-card-skeleton' />
   }
 
   return (
     <>
-      {cityWeather ? renderCard() : renderSkeleton()}
+      {cityWeather.name ? renderCard() : renderSkeleton()}
     </>
   )
 }
