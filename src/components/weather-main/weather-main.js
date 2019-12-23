@@ -91,7 +91,7 @@ const WeatherMain = () => {
               title='asd'
               onChange={handleRadiusChange}>
               {[10, 20, 30, 40].map(item => {
-                return <MenuItem value={item}>{item}</MenuItem>;
+                return <MenuItem key={item} value={item}>{item}</MenuItem>;
               })}
             </Select>
           </Grid>

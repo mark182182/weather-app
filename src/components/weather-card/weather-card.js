@@ -14,9 +14,13 @@ const WeatherCard = props => {
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {cityWeather.weather[0].main}
-          <Divider />
+        </Typography>
+        <Divider />
+        <Typography variant="body2" color="textSecondary" component="p">
           {cityWeather.weather[0].description}
-          <Divider />
+        </Typography>
+        <Divider />
+        <Typography variant="body2" color="textSecondary" component="p">
           {Math.floor(cityWeather.main.temp - 273.15) + '\u2103'}
         </Typography>
       </CardContent>
