@@ -87,6 +87,7 @@ const WeatherMain = () => {
             <TextField
               type='search'
               variant='outlined'
+              placeholder='e.g. London'
               onKeyDown={getPosition} />
           </Grid>
           <Grid container item justify='flex-end' alignItems='center' xs={3}>
