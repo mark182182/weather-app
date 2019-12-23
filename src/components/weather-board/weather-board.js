@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Paper } from '@material-ui/core';
 import WeatherCard from '../weather-card/weather-card';
 import uuid from 'uuid/v1';

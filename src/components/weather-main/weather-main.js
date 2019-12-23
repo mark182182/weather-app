@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, TextField, MenuItem, Select, InputLabel, Typography } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import { getUserGeoLocation } from '../../services/geolocation';
 import { stripGeoNames, loadWeatherForLocation, stripLatLong } from '../../reducer/geolocation';
+import WeatherSearch from '../weather-search/weather-search';
 import WeatherBoard from '../weather-board/weather-board';
 import './weather-main.css';
 
@@ -66,7 +67,7 @@ const WeatherMain = () => {
   }
 
   const resetFlag = setter => {
-    setInterval(() => {
+    setTimeout(() => {
       setter(false);
     }, 4000);
   }
@@ -82,39 +83,12 @@ const WeatherMain = () => {
   return (
     <Container className='weather-container'>
       <Grid container direction='column' className='weather-main'>
-        <Grid container justify='space-between'>
-          <Grid container item alignItems='center' xs={6}>
-            <InputLabel>Location: </InputLabel>
-            <TextField
-              type='search'
-              variant='outlined'
-              placeholder='e.g. London'
-              onKeyDown={getPosition} />
-          </Grid>
-          <Grid container item justify='flex-end' alignItems='center' xs={3}>
-            <InputLabel>Radius: </InputLabel>
-            <Select
-              value={radius}
-              variant='outlined'
-              onChange={handleRadiusChange}>
-              {Array.from(Array(20), (_, key) => (key + 1) * 10)
-                .map(item => {
-                  return <MenuItem key={item} value={item}>{item}</MenuItem>;
-                })}
-            </Select>
-          </Grid>
-          <Grid container item justify='flex-end' alignItems='center' xs={3}>
-            <InputLabel>Results: </InputLabel>
-            <Select
-              value={maxRows}
-              variant='outlined'
-              onChange={handleMaxRowsChange}>
-              {[10, 20, 30, 40].map(item => {
-                return <MenuItem key={item} value={item}>{item}</MenuItem>;
-              })}
-            </Select>
-          </Grid>
-        </Grid>
+        <WeatherSearch
+          getPosition={getPosition}
+          radius={radius}
+          handleRadiusChange={handleRadiusChange}
+          maxRows={maxRows}
+          handleMaxRowsChange={handleMaxRowsChange} />
         <WeatherBoard location={location} />
       </Grid>
     </Container>
