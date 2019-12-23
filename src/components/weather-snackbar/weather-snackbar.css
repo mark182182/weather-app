@@ -1,0 +1,12 @@
+#message {
+  display: flex;
+  align-items: center;
+}
+
+#error {
+  margin-right: 1em;
+
+}
+#weather-snackbar {
+  background-color: red;
+}

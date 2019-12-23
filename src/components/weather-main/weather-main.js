@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Grid } from '@material-ui/core';
 import { getUserGeoLocation } from '../../services/geolocation';
 import { stripGeoNames, loadWeatherForLocation, stripLatLong } from '../../reducer/geolocation';
+import WeatherSnackbar from '../weather-snackbar/weather-snackbar';
 import WeatherSearch from '../weather-search/weather-search';
 import WeatherBoard from '../weather-board/weather-board';
 import './weather-main.css';
@@ -63,13 +64,10 @@ const WeatherMain = () => {
 
   const setNotFoundPosition = () => {
     setInvalidPosition(true);
-    resetFlag(setInvalidPosition);
   }
 
-  const resetFlag = setter => {
-    setTimeout(() => {
-      setter(false);
-    }, 4000);
+  const resetNotFoundPosition = () => {
+    setInvalidPosition(false);
   }
 
   const handleRadiusChange = event => {
@@ -82,6 +80,9 @@ const WeatherMain = () => {
 
   return (
     <Container className='weather-container'>
+      <WeatherSnackbar
+        open={invalidPosition}
+        close={resetNotFoundPosition} />
       <Grid container direction='column' className='weather-main'>
         <WeatherSearch
           getPosition={getPosition}
