@@ -4,8 +4,9 @@ export const getGeoNames = async geoProps => {
   const response = await fetch(GEO_NAMES +
     `?lat=${geoProps.lat}` +
     `&lng=${geoProps.lng}` +
-    `&username=${process.env.REACT_APP_USER_NAME}` +
-    `&maxRows=${geoProps.rad}`);
+    `&radius=${geoProps.radius}` +
+    `&maxRows=${geoProps.maxRows}` +
+    `&username=${process.env.REACT_APP_USER_NAME}`);
   return response.json();
 }
 
