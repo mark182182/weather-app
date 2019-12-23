@@ -8,8 +8,9 @@ import './weather-main.css';
 const WeatherMain = () => {
   const [userPosition, setUserPosition] = useState({});
   const [invalidPosition, setInvalidPosition] = useState(false);
+  const [maxRows, setMaxRows] = useState(10);
   const [radius, setRadius] = useState(10);
-  const [location, setLocation] = useState(new Array(radius).fill({}));
+  const [location, setLocation] = useState(new Array(maxRows).fill({}));
 
   useEffect(() => {
     loadLocationsDefault();
@@ -24,6 +25,7 @@ const WeatherMain = () => {
   const loadLocationsDefault = async () => {
     const userCoords = await getUserGeoLocation();
     userCoords.rad = radius;
+    userCoords.maxRows = maxRows;
     const weatherLocation = loadWeatherForLocation(await stripGeoNames(userCoords));
     setLocation(await weatherLocation);
   }
@@ -53,6 +55,7 @@ const WeatherMain = () => {
 
   const setFoundPosition = strippedPosition => {
     strippedPosition[0].geometry.rad = radius;
+    strippedPosition[0].geometry.maxRows = maxRows;
     setUserPosition(strippedPosition[0].geometry);
   }
 
@@ -71,25 +74,39 @@ const WeatherMain = () => {
     setRadius(event.target.value);
   }
 
+  const handleMaxRowsChange = event => {
+    setMaxRows(event.target.value);
+  }
 
   return (
     <Container className='weather-container'>
       <Grid container direction='column' className='weather-main'>
         <Grid container justify='space-between'>
-          <Grid container item alignItems='center'xs={6}>
+          <Grid container item alignItems='center' xs={6}>
             <InputLabel>Location: </InputLabel>
             <TextField
               type='search'
               variant='outlined'
               onKeyDown={getPosition} />
           </Grid>
-          <Grid container item justify='flex-end' alignItems='center'xs={3}>
+          <Grid container item justify='flex-end' alignItems='center' xs={3}>
             <InputLabel>Radius: </InputLabel>
             <Select
               value={radius}
               variant='outlined'
-              title='asd'
               onChange={handleRadiusChange}>
+              {Array.from(Array(20), (_, key) => (key + 1) * 10)
+                .map(item => {
+                  return <MenuItem key={item} value={item}>{item}</MenuItem>;
+                })}
+            </Select>
+          </Grid>
+          <Grid container item justify='flex-end' alignItems='center' xs={3}>
+            <InputLabel>Results: </InputLabel>
+            <Select
+              value={maxRows}
+              variant='outlined'
+              onChange={handleMaxRowsChange}>
               {[10, 20, 30, 40].map(item => {
                 return <MenuItem key={item} value={item}>{item}</MenuItem>;
               })}
