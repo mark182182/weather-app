@@ -2,6 +2,14 @@
   margin: 2em;
 }
 
+.weather-card-icon {
+  width: 4em;
+  height: 4em;
+  margin: 0.5em 0 0.5em 0;
+  background: skyblue;
+  border-radius: 20%;
+}
+
 .weather-card-skeleton {
   width: 85%;
   height: 20% !important;
@@ -14,4 +22,4 @@
     height: 25% !important;
     margin: 2em;
   }
-} 
+}

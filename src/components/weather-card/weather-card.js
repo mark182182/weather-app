@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent, Typography, Divider } from '@material-ui/core';
+import { Card, CardContent, Typography, Divider, CardMedia } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
+import { WEATHER_ICON } from '../../constants/urls';
 import './weather-card.css';
 
 const WeatherCard = props => {
@@ -8,12 +9,14 @@ const WeatherCard = props => {
 
   const renderCard = () => {
     return <Card className='weather-card'>
+      <CardMedia
+        image={WEATHER_ICON +
+          cityWeather.weather[0].icon +
+          '@2x.png'}
+        className='weather-card-icon' />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           {cityWeather.name}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {cityWeather.weather[0].main}
         </Typography>
         <Divider />
         <Typography variant="body2" color="textSecondary" component="p">
