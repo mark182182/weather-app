@@ -1,11 +1,11 @@
 import { GEO_NAMES, WEATHER_MAP, GEOCAGE } from '../constants/urls';
 
-export const getGeoNames = async gepProps => {
+export const getGeoNames = async geoProps => {
   const response = await fetch(GEO_NAMES +
-    `?lat=${gepProps.lat}` +
-    `&lng=${gepProps.lng}` +
+    `?lat=${geoProps.lat}` +
+    `&lng=${geoProps.lng}` +
     `&username=${process.env.REACT_APP_USER_NAME}` +
-    `&radius=${gepProps.rad}`);
+    `&maxRows=${geoProps.rad}`);
   return response.json();
 }
 
