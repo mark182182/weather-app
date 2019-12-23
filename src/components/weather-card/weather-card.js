@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Card, CardContent, Typography, Divider, CardMedia, Fade } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { WEATHER_ICON } from '../../constants/urls';
@@ -8,7 +8,7 @@ const WeatherCard = props => {
   const { cityWeather } = props;
 
   const renderCard = () => {
-    return <Fade in={cityWeather.name} style={{ transitionDelay: cityWeather.name ? '500ms' : '0ms' }}>
+    return <Fade in={Boolean(cityWeather.name)} style={{ transitionDelay: cityWeather.name ? '500ms' : '0ms' }}>
       <Card className='weather-card'>
         <CardMedia
           image={WEATHER_ICON +
