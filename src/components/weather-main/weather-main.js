@@ -31,6 +31,7 @@ const WeatherMain = () => {
   }
 
   const loadLocationsFromInput = async () => {
+    setLocation(new Array(maxRows).fill({}));
     const weatherLocation = loadWeatherForLocation(await stripGeoNames(userPosition));
     setLocation(await weatherLocation);
   }
