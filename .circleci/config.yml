@@ -17,6 +17,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - run: 
+          name: Replace coveralls repo token
+          command: sed -i "s/COVERALLS\_TOKEN/$COVERALLS_TOKEN/g" .coveralls.yml
       - run:
           name: Run tests and create coverage report
           command: npm run test-nowatch && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
