@@ -22,7 +22,13 @@ jobs:
           command: npm build
       - run:
           name: Run tests
-          command: npm test
+          command: npm run test-nowatch
+      - run:
+          name: generate-firebaserc
+          command: cp .firebaserc.example .firebaserc
+      - run:
+          name: modify-firebaserc
+          command: sed -i "s/\[YOUR\-PROJECT\-ID\]/$FIREBASE_PROJECT_ID/g" .firebaserc
       - run:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
