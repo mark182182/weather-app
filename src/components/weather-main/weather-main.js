@@ -15,28 +15,26 @@ const WeatherMain = () => {
   const [location, setLocation] = useState(new Array(maxRows).fill({}));
 
   useEffect(() => {
+    const loadLocationsDefault = async () => {
+      const userCoords = await getUserGeoLocation();
+      userCoords.rad = radius;
+      userCoords.maxRows = maxRows;
+      const weatherLocation = loadWeatherForLocation(await stripGeoNames(userCoords));
+      setLocation(await weatherLocation);
+    }
     loadLocationsDefault();
-  }, []);
+  }, [radius, maxRows]);
 
   useEffect(() => {
+    const loadLocationsFromInput = async () => {
+      setLocation(new Array(maxRows).fill({}));
+      const weatherLocation = loadWeatherForLocation(await stripGeoNames(userPosition));
+      setLocation(await weatherLocation);
+    };
     if (userPosition.lat) {
       loadLocationsFromInput();
     }
-  }, [userPosition]);
-
-  const loadLocationsDefault = async () => {
-    const userCoords = await getUserGeoLocation();
-    userCoords.rad = radius;
-    userCoords.maxRows = maxRows;
-    const weatherLocation = loadWeatherForLocation(await stripGeoNames(userCoords));
-    setLocation(await weatherLocation);
-  }
-
-  const loadLocationsFromInput = async () => {
-    setLocation(new Array(maxRows).fill({}));
-    const weatherLocation = loadWeatherForLocation(await stripGeoNames(userPosition));
-    setLocation(await weatherLocation);
-  }
+  }, [userPosition, maxRows]);
 
   const getPosition = event => {
     const getStrippedPosition = async () => {

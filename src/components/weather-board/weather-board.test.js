@@ -13,6 +13,6 @@ const cityWeather = {
   main: { temp: '278.63' }
 }
 
-it('renders without crashing', () => {
+it('renders without crashing with the provided props', () => {
   shallow(<WeatherBoard location={[cityWeather]} />);
 });

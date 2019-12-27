@@ -10,7 +10,7 @@ const WeatherBoard = props => {
   return (
     <>
       <Paper className='weather-board'>
-        {location.map(city => {
+        {location.length > 0 && location.map(city => {
           return <WeatherCard key={uuid()} cityWeather={city}></WeatherCard>
         })}
       </Paper>
