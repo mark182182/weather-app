@@ -18,11 +18,11 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Build
-          command: npm build
-      - run:
           name: Run tests
           command: npm run test-nowatch
+      - run:
+          name: Build
+          command: npm run build --prod
       - run:
           name: generate-firebaserc
           command: cp .firebaserc.example .firebaserc
