@@ -1,4 +1,4 @@
-## Weather application [![CircleCI](https://circleci.com/gh/mark182182/weather-app/tree/master.svg?style=svg)](https://circleci.com/gh/mark182182/weather-app/tree/master)
+## Weather application [![CircleCI](https://circleci.com/gh/mark182182/weather-app/tree/master.svg?style=svg)](https://circleci.com/gh/mark182182/weather-app/tree/master) [![Coverage Status](https://coveralls.io/repos/github/mark182182/weather-app/badge.svg)](https://coveralls.io/github/mark182182/weather-app)
 
 <p align="center"><a href="https://imgur.com/MhGtjqZ"><img src="https://i.imgur.com/MhGtjqZ.jpg" width="50%" height="50%" title="source: imgur.com" /></a></p>
 
