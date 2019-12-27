@@ -18,8 +18,8 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Run tests
-          command: npm run test-nowatch
+          name: Run tests and create coverage report
+          command: npm run test-nowatch && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
       - run:
           name: Create .env file
           command: echo REACT_APP_USER_NAME="$REACT_APP_USER_NAME"\nREACT_APP_WEATHER_API_KEY="$REACT_APP_WEATHER_API_KEY"\nREACT_APP_GEOCAGE_API_KEY="$REACT_APP_GEOCAGE_API_KEY" >> ./.env
