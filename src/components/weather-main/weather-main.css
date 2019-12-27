@@ -7,6 +7,12 @@
   width: 40vw !important;
 }
 
+@media (min-width: 1280px) {
+  .weather-main {
+    width: 60vw !important;
+  }
+}
+
 @media (max-width: 768px) {
   .weather-main {
     width: 60vw !important;

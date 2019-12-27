@@ -16,6 +16,13 @@
   margin: 2em;
 }
 
+@media (min-width: 1280px) {
+  .weather-card {
+    width: 30%;
+    height: 32%;
+  }
+}
+
 @media (max-width: 768px) {
   .weather-card-skeleton {
     width: 70%;

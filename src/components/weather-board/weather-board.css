@@ -3,3 +3,12 @@
   overflow-y: auto;
   height: 80vh;
 }
+
+@media (min-width: 1280px) {
+  .weather-board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+}
