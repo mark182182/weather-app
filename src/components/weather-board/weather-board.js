@@ -1,8 +1,8 @@
-import React from "react";
-import { Paper } from "@material-ui/core";
-import WeatherCard from "../weather-card/weather-card";
-import uuid from "uuid/v1";
-import "./weather-board.css";
+import React from 'react';
+import { Paper } from '@material-ui/core';
+import WeatherCard from '../weather-card/weather-card';
+import uuid from 'uuid/v1';
+import './weather-board.css';
 
 const WeatherBoard = props => {
   const { location } = props;

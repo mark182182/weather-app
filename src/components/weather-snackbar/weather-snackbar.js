@@ -16,20 +16,21 @@ const WeatherSnackbar = props => {
         open={open}
         autoHideDuration={4000}
         onClose={close}
-        message={<span id='message'><Error id='error' />
-          Location not found</span>}
-        ContentProps={{ id: "weather-snackbar" }}
+        message={
+          <span id="message">
+            <Error id="error" />
+            Location not found
+          </span>
+        }
+        ContentProps={{ id: 'weather-snackbar' }}
         action={[
-          <IconButton
-            key="close"
-            color='inherit'
-            onClick={close}>
+          <IconButton key="close" color="inherit" onClick={close}>
             <Close />
-          </IconButton>
+          </IconButton>,
         ]}
       />
     </>
-  )
-}
+  );
+};
 
 export default WeatherSnackbar;

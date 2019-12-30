@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match the snapshot 1`] = `"<div class=\\"MuiPaper-root MuiCard-root weather-card MuiPaper-elevation1 MuiPaper-rounded\\"><div class=\\"MuiCardMedia-root weather-card-icon\\" style=\\"background-image:url(&quot;https://openweathermap.org/img/wn/04d@2x.png&quot;)\\"></div><div class=\\"MuiCardContent-root\\"><h2 class=\\"MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom\\">Somewhere</h2><hr class=\\"MuiDivider-root\\"/><p class=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary\\">broken clouds</p><hr class=\\"MuiDivider-root\\"/><p class=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary\\">5℃</p></div></div>"`;
