@@ -24,6 +24,13 @@
     "test-nowatch": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "./services/geolocation.js",
+      "./src/index.js",
+      "./src/serviceWorker.js"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
